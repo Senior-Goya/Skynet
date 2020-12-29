@@ -11,9 +11,9 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-              services.AddScoped<IProductRespository, ProductRespository>();
+            services.AddScoped<IProductRespository, ProductRespository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GemericRepository<>)));
-                  services.Configure<ApiBehaviorOptions>(options => 
+            services.Configure<ApiBehaviorOptions>(options => 
             {
                 options.InvalidModelStateResponseFactory = actionContext => 
                 {
@@ -32,6 +32,7 @@ namespace API.Extensions
                 };
 
             });
+            services.AddSwaggerGen();
 
             return services;
         }
