@@ -1,0 +1,30 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BusyService {
+  busyRequestCount = 0;
+
+  constructor(private spinner: NgxSpinnerService) { }
+
+  busy(){
+    this.busyRequestCount++;
+    this.spinner.show(undefined, {
+      type: 'pacman',
+      bdColor: 'rgba(255,2255,255,0.7)',
+      color: '#333333'
+
+    });
+  }
+
+  idle(){
+    this.busyRequestCount--;
+    if(this.busyRequestCount <= 0){
+      this.busyRequestCount = 0;
+      this.spinner.hide();
+    }
+  }
+}
