@@ -13,6 +13,7 @@ namespace API.Extensions
         {
             services.AddScoped<IProductRespository, ProductRespository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GemericRepository<>)));
+             services.AddScoped<IBasketRepository,BasketRepository>();
             services.Configure<ApiBehaviorOptions>(options => 
             {
                 options.InvalidModelStateResponseFactory = actionContext => 
@@ -33,6 +34,7 @@ namespace API.Extensions
 
             });
             services.AddSwaggerGen();
+           
 
             return services;
         }
